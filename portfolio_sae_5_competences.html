@@ -204,7 +204,11 @@
       margin-bottom: 18px;
     }
 
-    .section-header p { margin: 0; color: var(--muted); max-width: 760px; }
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
 
     .grid {
       display: grid;
@@ -290,6 +294,44 @@
 
     .step strong { display: block; margin-bottom: 6px; }
 
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .gallery-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      background: #0d1428;
+    }
+
+    .gallery-content {
+      padding: 16px 18px 18px;
+    }
+
+    .gallery-content h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .gallery-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
     .footer {
       margin-top: 22px;
       padding: 26px 0 50px;
@@ -299,15 +341,21 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid, .grid, .timeline {
+      .hero-grid, .grid, .timeline, .gallery {
         grid-template-columns: 1fr;
       }
+
       .hero-stats {
         grid-template-columns: 1fr;
       }
+
       .section-header {
         flex-direction: column;
         align-items: start;
+      }
+
+      .gallery-card img {
+        height: 220px;
       }
     }
   </style>
@@ -321,6 +369,7 @@
         <a href="#competences">Compétences</a>
         <a href="#demarche">Démarche</a>
         <a href="#preuves">Preuves</a>
+        <a href="#galerie">Galerie</a>
       </nav>
     </div>
   </header>
@@ -330,7 +379,7 @@
       <div class="hero-grid">
         <article class="hero-card">
           <span class="eyebrow">BUT GEII • Portfolio orienté compétences</span>
-          <h1>Massinissa Harfouche</h1>
+          <h1>Charif Harfouche</h1>
           <p class="lead">
             Portfolio centré sur les compétences mobilisées pour concevoir et réaliser un système de mesure d’énergie connecté.
             L’objectif n’est pas de raconter le projet, mais de montrer les blocs techniques réellement maîtrisés.
@@ -405,7 +454,7 @@
           <ul>
             <li>LM358, résistances, condensateurs, diode, oscilloscope.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> schéma du conditionneur, captures oscilloscope, photo du montage sur protoboard.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P1.jpeg</div>
         </article>
 
         <article class="card">
@@ -424,7 +473,7 @@
           <ul>
             <li>ACS712, ZMPT101B, alimentation, multimètre, montage de test.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> photos des capteurs câblés, schéma d’intégration, visuels de mesures réelles.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P2.jpeg</div>
         </article>
 
         <article class="card">
@@ -443,7 +492,7 @@
           <ul>
             <li>ESP8266, logique de calcul énergétique, environnement Arduino.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> extrait de code, capture console ou page affichant les valeurs calculées.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P3.jpeg</div>
         </article>
 
         <article class="card">
@@ -462,7 +511,7 @@
           <ul>
             <li>WiFi 2.4 GHz, ESP8266, serveur web embarqué, smartphone / navigateur.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> capture de l’interface web, photo du test sur téléphone, architecture réseau simple.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P4.jpeg</div>
         </article>
 
         <article class="card">
@@ -481,7 +530,7 @@
           <ul>
             <li>Module relais 5 V, sortie numérique, charge de test.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> photo du module relais, LED d’état, capture des boutons ON/OFF de l’interface.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P5.jpeg</div>
         </article>
 
         <article class="card">
@@ -500,7 +549,7 @@
           <ul>
             <li>KiCad, fer à souder, carte percée, implantation des composants.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> schéma KiCad, PCB avant soudure, PCB après soudure, vue côté pistes.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P6.jpeg</div>
         </article>
 
         <article class="card">
@@ -519,7 +568,7 @@
           <ul>
             <li>Prototype complet capable de mesurer, traiter, transmettre et agir.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> photo du montage complet, schéma global du système, vue d’ensemble du prototype final.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P7.jpeg</div>
         </article>
 
         <article class="card">
@@ -538,7 +587,7 @@
           <ul>
             <li>Capacité à sécuriser un développement technique étape par étape.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> captures oscilloscope, tests de simulation, comparaison entre simulation et montage réel.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P8.jpeg</div>
         </article>
 
         <article class="card">
@@ -557,7 +606,7 @@
           <ul>
             <li>Approche proche d’une vraie démarche de conception système.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> frise des étapes, photos des différentes phases, schéma d’évolution protoboard → PCB → prototype final.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P9.jpeg</div>
         </article>
 
         <article class="card">
@@ -578,7 +627,7 @@
             <li>Calibration plus poussée.</li>
             <li>Stockage et historisation des données.</li>
           </ul>
-          <div class="evidence"><strong>Preuves à afficher :</strong> slide de bilan technique, tableau limites / améliorations, vision d’évolution du système.</div>
+          <div class="evidence"><strong>Preuve visuelle liée :</strong> P10.jpeg</div>
         </article>
       </div>
     </section>
@@ -613,36 +662,132 @@
     <section class="section panel" id="preuves">
       <div class="section-header">
         <div>
-          <h2>Éléments visuels à intégrer</h2>
-          <p>Pour rendre le portfolio plus crédible, chaque compétence doit être accompagnée d’une preuve visuelle ou technique.</p>
+          <h2>Éléments visuels intégrés</h2>
+          <p>Chaque image ci-dessous doit être placée dans le même dossier que ce fichier HTML avec le bon nom : P1.jpeg à P10.jpeg.</p>
         </div>
       </div>
       <div class="grid">
         <article class="card">
           <div class="card-top">
-            <h3>Photos à privilégier</h3>
+            <h3>Répartition conseillée</h3>
             <div class="index">A</div>
           </div>
           <ul>
-            <li>Montage sur protoboard.</li>
-            <li>Captures d’oscilloscope lisibles.</li>
-            <li>PCB avant et après soudure.</li>
-            <li>Montage final complet.</li>
-            <li>Test de l’interface sur smartphone ou PC.</li>
+            <li>P1 : montage sur protoboard</li>
+            <li>P2 : capteurs câblés</li>
+            <li>P3 : code ou affichage de valeurs</li>
+            <li>P4 : interface web sur téléphone ou PC</li>
+            <li>P5 : module relais / commande</li>
+            <li>P6 : PCB KiCad ou carte soudée</li>
+            <li>P7 : vue du montage complet</li>
+            <li>P8 : test ou capture oscilloscope</li>
+            <li>P9 : évolution du prototype</li>
+            <li>P10 : bilan final ou vue propre finale</li>
           </ul>
         </article>
+
         <article class="card">
           <div class="card-top">
-            <h3>Documents techniques utiles</h3>
+            <h3>Règle à respecter</h3>
             <div class="index">B</div>
           </div>
           <ul>
-            <li>Schéma du conditionneur.</li>
-            <li>Vue KiCad du PCB.</li>
-            <li>Extraits de code bien ciblés.</li>
-            <li>Architecture fonctionnelle du système.</li>
-            <li>Tableau synthétique compétences / preuves.</li>
+            <li>Les fichiers doivent être dans le même dossier que la page HTML.</li>
+            <li>Les noms doivent être exactement : P1.jpeg, P2.jpeg ... P10.jpeg</li>
+            <li>Évite les noms du type P1(1).jpeg ou p1.jpg</li>
+            <li>Si une image ne s’affiche pas, c’est presque toujours un problème de nom.</li>
           </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="galerie">
+      <div class="section-header">
+        <div>
+          <h2>Galerie des preuves visuelles</h2>
+          <p>Les images ci-dessous sont directement reliées aux compétences du portfolio.</p>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <article class="gallery-card">
+          <img src="P1.jpeg" alt="P1 - Montage sur protoboard">
+          <div class="gallery-content">
+            <h3>P1 – Montage sur protoboard</h3>
+            <p>Première phase de validation du conditionneur et du câblage analogique.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P2.jpeg" alt="P2 - Capteurs de mesure">
+          <div class="gallery-content">
+            <h3>P2 – Capteurs de mesure</h3>
+            <p>Intégration des capteurs de courant et de tension dans le prototype.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P3.jpeg" alt="P3 - Programmation embarquée">
+          <div class="gallery-content">
+            <h3>P3 – Programmation embarquée</h3>
+            <p>Traitement des mesures et calcul des grandeurs énergétiques sur ESP8266.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P4.jpeg" alt="P4 - Interface web">
+          <div class="gallery-content">
+            <h3>P4 – Interface web</h3>
+            <p>Consultation des valeurs via une page web locale accessible en WiFi.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P5.jpeg" alt="P5 - Commande relais">
+          <div class="gallery-content">
+            <h3>P5 – Commande relais</h3>
+            <p>Ajout de la fonction ON/OFF pour agir sur la charge à distance.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P6.jpeg" alt="P6 - PCB">
+          <div class="gallery-content">
+            <h3>P6 – Conception PCB</h3>
+            <p>Passage d’un montage temporaire à une carte plus propre et plus fiable.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P7.jpeg" alt="P7 - Intégration complète">
+          <div class="gallery-content">
+            <h3>P7 – Intégration système</h3>
+            <p>Assemblage final des différents blocs dans un seul prototype cohérent.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P8.jpeg" alt="P8 - Test et validation">
+          <div class="gallery-content">
+            <h3>P8 – Tests et validation</h3>
+            <p>Validation progressive du comportement réel à partir des mesures observées.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P9.jpeg" alt="P9 - Démarche d’ingénierie">
+          <div class="gallery-content">
+            <h3>P9 – Démarche d’ingénierie</h3>
+            <p>Illustration des différentes étapes entre idée, correction et amélioration.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="P10.jpeg" alt="P10 - Résultat final">
+          <div class="gallery-content">
+            <h3>P10 – Résultat final</h3>
+            <p>Vue finale du système avec mise en valeur du résultat obtenu.</p>
+          </div>
         </article>
       </div>
     </section>

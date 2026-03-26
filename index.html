@@ -3,223 +3,613 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio SAE 5 – Compétences GEII</title>
+  <title>Portfolio SAÉ 5 – Compétences BUT GEII</title>
   <style>
     :root {
       --bg: #0b1020;
       --panel: #121a31;
       --panel-2: #182341;
-      --text: #eaf0ff;
-      --muted: #aeb9d9;
+      --text: #edf2ff;
+      --muted: #b8c2e0;
       --accent: #6ea8ff;
       --accent-2: #7ef0c4;
       --line: rgba(255,255,255,0.08);
-      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --shadow: 0 18px 40px rgba(0,0,0,0.28);
       --radius: 22px;
       --max: 1180px;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: Inter, Arial;
-      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(110,168,255,0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(126,240,196,0.10), transparent 25%),
+        linear-gradient(180deg, #08101f 0%, #0b1020 100%);
+      line-height: 1.6;
     }
 
-    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
 
-    header {
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
       position: sticky;
       top: 0;
-      background: rgba(11,16,32,0.9);
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11, 16, 32, 0.78);
       border-bottom: 1px solid var(--line);
     }
 
-    .nav { display: flex; justify-content: space-between; padding: 14px 0; }
-
-    .hero { padding: 60px 0; }
-
-    h1 { font-size: 3rem; margin: 10px 0; }
-
-    .section { margin-top: 20px; padding: 20px; background: var(--panel); border-radius: 20px; }
-
-    .grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 15px; }
-
-    .card {
-      background: var(--panel-2);
-      padding: 20px;
-      border-radius: 15px;
-    }
-
-    .placeholder {
-      width: 100%;
-      height: 160px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #1e2a4a, #2e4a7a);
+    .nav {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      color: #9bb4ff;
-      font-size: 0.9rem;
-      margin-top: 10px;
-      border: 1px solid rgba(255,255,255,0.1);
+      gap: 20px;
+      padding: 14px 0;
     }
 
-    ul { margin-left: 18px; }
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-card,
+    .panel,
+    .competence-card,
+    .gallery-card,
+    .footer-card {
+      background: linear-gradient(180deg, rgba(24,35,65,0.96), rgba(18,26,49,0.96));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #06111a;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 13px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), #8ab8ff);
+      color: #08101f;
+      border: none;
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-image {
+      padding: 14px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+    }
+
+    section {
+      padding: 24px 0;
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 860px;
+      margin: 0;
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mini-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .mini-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent-2);
+    }
+
+    .competence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .competence-card {
+      overflow: hidden;
+    }
+
+    .competence-head {
+      padding: 24px 24px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, rgba(110,168,255,0.12), rgba(126,240,196,0.08));
+    }
+
+    .competence-code {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 10px;
+    }
+
+    .competence-body {
+      padding: 24px;
+    }
+
+    .competence-body h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .competence-body p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .points {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .points li {
+      padding: 14px 14px 14px 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      position: relative;
+    }
+
+    .points li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      left: 8px;
+      top: 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #0e1730;
+    }
+
+    .gallery-card .caption {
+      padding: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer {
+      padding: 24px 0 48px;
+    }
+
+    .footer-card {
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .highlight {
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .competence-grid,
+      .project-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .project-grid,
+      .competence-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-card,
+      .panel,
+      .competence-body,
+      .competence-head {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
   </style>
 </head>
 <body>
-
-<div class="container">
-
-  <section class="hero">
-    <h1>Portfolio – Compétences GEII</h1>
-    <p>Portfolio basé sur les compétences centrales du BUT GEII mobilisées lors de la réalisation d’un système énergétique connecté : C1 Concevoir, C2 Vérifier, C3 Maintenir, C4 Installer.</p>
-  </section>
-
-  <section class="section">
-    <h2>Compétences centrales du BUT GEII</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>C1 — Concevoir</h3>
-        <ul>
-          <li>Conception du conditionneur analogique adapté au microcontrôleur</li>
-          <li>Choix des capteurs, de l’ESP8266 et du relais</li>
-          <li>Conception du PCB sous KiCad et structuration de l’architecture globale</li>
-        </ul>
-        <div class="placeholder">Conception électronique / architecture système</div>
-      </div>
-
-      <div class="card">
-        <h3>C2 — Vérifier</h3>
-        <ul>
-          <li>Validation des signaux à l’oscilloscope</li>
-          <li>Tests progressifs sur valeurs simulées puis réelles</li>
-          <li>Contrôle de cohérence des mesures et du fonctionnement global</li>
-        </ul>
-        <div class="placeholder">Mesures, essais et validation</div>
-      </div>
-
-      <div class="card">
-        <h3>C3 — Maintenir</h3>
-        <ul>
-          <li>Analyse des limites du prototype et des écarts de mesure</li>
-          <li>Correction du code, ajustement du montage et amélioration progressive</li>
-          <li>Recherche de solutions pour fiabiliser le système et faciliter son évolution</li>
-        </ul>
-        <div class="placeholder">Diagnostic, correction et amélioration</div>
-      </div>
-
-      <div class="card">
-        <h3>C4 — Installer</h3>
-        <ul>
-          <li>Montage sur protoboard puis intégration sur PCB</li>
-          <li>Câblage des capteurs, du relais et du microcontrôleur</li>
-          <li>Assemblage final du prototype connecté et mise en service</li>
-        </ul>
-        <div class="placeholder">Montage, câblage et intégration</div>
-      </div>
-
-      <div class="card">
-        <h3>Compétences techniques associées</h3>
-        <ul>
-          <li>Électronique analogique</li>
-          <li>Mesure électrique</li>
-          <li>Programmation embarquée</li>
-          <li>Communication IoT</li>
-        </ul>
-        <div class="placeholder">Blocs techniques mobilisés</div>
-      </div>
-
-      <div class="card">
-        <h3>Résultat global</h3>
-        <ul>
-          <li>Prototype capable de mesurer, traiter, transmettre et commander</li>
-          <li>Démarche de travail structurée de la simulation au prototype final</li>
-          <li>Mise en œuvre cohérente des compétences centrales du BUT GEII</li>
-        </ul>
-        <div class="placeholder">Système final fonctionnel</div>
-      </div>
-
-      <div class="card">
-        <h3>Électronique analogique</h3>
-        <ul>
-          <li>Offset, amplification, filtrage</li>
-          <li>Utilisation AOP LM358</li>
-        </ul>
-        <div class="placeholder">Oscilloscope / Signal analogique</div>
-      </div>
-
-      <div class="card">
-        <h3>Mesure électrique</h3>
-        <ul>
-          <li>Capteurs ACS712 & ZMPT101B</li>
-          <li>Conversion analogique</li>
-        </ul>
-        <div class="placeholder">Capteurs courant / tension</div>
-      </div>
-
-      <div class="card">
-        <h3>Programmation embarquée</h3>
-        <ul>
-          <li>Calcul puissance et énergie</li>
-          <li>Traitement des données</li>
-        </ul>
-        <div class="placeholder">Code ESP8266</div>
-      </div>
-
-      <div class="card">
-        <h3>IoT & Communication</h3>
-        <ul>
-          <li>Serveur web embarqué</li>
-          <li>Transmission WiFi</li>
-        </ul>
-        <div class="placeholder">Interface web</div>
-      </div>
-
-      <div class="card">
-        <h3>Automatisme</h3>
-        <ul>
-          <li>Commande relais</li>
-          <li>Interaction utilisateur</li>
-        </ul>
-        <div class="placeholder">Relais ON/OFF</div>
-      </div>
-
-      <div class="card">
-        <h3>Conception PCB</h3>
-        <ul>
-          <li>KiCad</li>
-          <li>Soudure composants</li>
-        </ul>
-        <div class="placeholder">PCB électronique</div>
-      </div>
-
-      <div class="card">
-        <h3>Intégration système</h3>
-        <ul>
-          <li>Assemblage global</li>
-          <li>Système fonctionnel</li>
-        </ul>
-        <div class="placeholder">Montage final</div>
-      </div>
-
-      <div class="card">
-        <h3>Tests & validation</h3>
-        <ul>
-          <li>Oscilloscope</li>
-          <li>Validation progressive</li>
-        </ul>
-        <div class="placeholder">Tests et mesures</div>
-      </div>
-
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">Portfolio <span>SAÉ 5</span></div>
+      <nav class="nav-links">
+        <a href="#projet">Le projet</a>
+        <a href="#competences">Les 4 compétences</a>
+        <a href="#photos">Photos</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-</div>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="tag">BUT GEII • Portfolio de compétences</div>
+          <h1>Comment la SAÉ 5 m’a permis de développer les 4 compétences du BUT</h1>
+          <p class="lead">
+            Ce portfolio présente mon projet de <span class="highlight">compteur d’énergie intelligent</span> et montre
+            concrètement comment les compétences <strong>C1 Concevoir</strong>, <strong>C2 Vérifier</strong>,
+            <strong>C3 Maintenir</strong> et <strong>C4 Installer</strong> ont été mobilisées tout au long de la SAÉ.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#competences">Voir les compétences</a>
+            <a class="btn btn-secondary" href="#photos">Voir les photos du projet</a>
+          </div>
+        </div>
 
+        <div class="hero-card hero-image">
+          <img src="P1.jpg" alt="Photo principale du projet SAÉ 5">
+        </div>
+      </div>
+    </section>
+
+    <section id="projet">
+      <div class="container">
+        <div class="section-title">
+          <h2>Présentation du projet</h2>
+          <p>
+            Dans cette SAÉ, l’objectif était de concevoir un prototype de compteur d’énergie intelligent capable de
+            mesurer, traiter, afficher et transmettre des données électriques. Le projet s’appuie sur un conditionneur
+            analogique, des capteurs, une carte ESP8266, un module relais et une interface web. Le rapport montre bien
+            cette logique de progression : étude des compteurs d’énergie, simulation du conditionneur, choix des composants,
+            développement du site web, commande par relais, puis passage au prototype final.
+          </p>
+        </div>
+
+        <div class="panel">
+          <p>
+            Le projet a suivi une vraie démarche d’ingénierie. On ne s’est pas contenté d’assembler des composants.
+            Il a fallu comprendre le fonctionnement des compteurs existants, imaginer une architecture réaliste,
+            tester chaque sous-partie, puis intégrer l’ensemble dans un système cohérent. Cette démarche est directement
+            liée aux compétences du BUT GEII. Le rapport explique notamment le rôle du conditionneur, la phase de
+            simulation sous Proteus, le passage de la protoboard au PCB sous KiCad, l’intégration des capteurs ACS712
+            et ZMPT101B, ainsi que le développement d’une interface web sur ESP8266. Tout cela montre que le projet ne
+            relève pas d’un simple montage, mais d’un prototype complet proche d’un système IoT réel.
+          </p>
+
+          <div class="project-grid">
+            <div class="mini-box">
+              <strong>Fonction du prototype</strong>
+              Mesurer la tension, le courant, la puissance et l’énergie, puis afficher ces valeurs sur une interface web.
+            </div>
+            <div class="mini-box">
+              <strong>Partie matérielle</strong>
+              Conditionneur analogique, capteurs de mesure, relais, alimentation et carte ESP8266.
+            </div>
+            <div class="mini-box">
+              <strong>Partie logicielle</strong>
+              Programmation de l’ESP8266, affichage web en temps réel et commande ON/OFF du relais à distance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="competences">
+      <div class="container">
+        <div class="section-title">
+          <h2>Les 4 compétences du BUT dans la SAÉ 5</h2>
+          <p>
+            Chaque compétence n’a pas été travaillée de manière isolée. Elles se croisent dans tout le projet. Mais on peut
+            quand même montrer clairement comment chacune a contribué au développement du prototype.
+          </p>
+        </div>
+
+        <div class="competence-grid">
+          <article class="competence-card">
+            <div class="competence-head">
+              <div class="competence-code">C1</div>
+              <h3>Concevoir</h3>
+            </div>
+            <div class="competence-body">
+              <p>
+                La compétence <strong>Concevoir</strong> a été essentielle dès le début du projet. Il a fallu définir une solution
+                technique capable de reproduire le fonctionnement d’un compteur d’énergie intelligent à notre échelle.
+                Cette phase apparaît dans le rapport quand on étudie les différents types de compteurs, puis quand on construit
+                l’architecture du prototype autour de la mesure, du traitement, de la communication WiFi et de la commande par relais.
+              </p>
+              <ul class="points">
+                <li>Choix d’une architecture cohérente : capteurs + conditionneur + ESP8266 + interface web + relais.</li>
+                <li>Conception du conditionneur analogique avec offset, amplification et détection de crête pour rendre le signal exploitable.</li>
+                <li>Passage du montage expérimental sur protoboard à une carte PCB conçue sous KiCad pour fiabiliser le système.</li>
+                <li>Réflexion sur l’utilité réelle du projet : mesurer, afficher, transmettre et agir sur la charge, comme un vrai compteur IoT.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="competence-card">
+            <div class="competence-head">
+              <div class="competence-code">C2</div>
+              <h3>Vérifier</h3>
+            </div>
+            <div class="competence-body">
+              <p>
+                La compétence <strong>Vérifier</strong> a permis de valider que chaque partie du projet fonctionnait correctement.
+                Le rapport insiste beaucoup sur cette dimension : simulation sous Proteus, observation des signaux à l’oscilloscope,
+                vérification du recentrage autour de Vref, contrôle de l’absence de saturation, essais du relais, puis comparaison
+                entre comportement attendu et comportement mesuré.
+              </p>
+              <ul class="points">
+                <li>Validation du bloc d’offset et du filtrage RC par mesures et visualisation des signaux.</li>
+                <li>Contrôle du gain d’amplification et de la stabilité de la sortie avant lecture par le microcontrôleur.</li>
+                <li>Vérification progressive du projet : d’abord les valeurs simulées, puis les composants réels.</li>
+                <li>Tests fonctionnels du relais et de l’interface web pour confirmer la cohérence entre action utilisateur et réaction du système.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="competence-card">
+            <div class="competence-head">
+              <div class="competence-code">C3</div>
+              <h3>Maintenir</h3>
+            </div>
+            <div class="competence-body">
+              <p>
+                La compétence <strong>Maintenir</strong> ne se limite pas à réparer une panne. Dans cette SAÉ, elle apparaît dans la
+                capacité à rendre le prototype stable, exploitable et évolutif. Il a fallu corriger les défauts observés, améliorer
+                les connexions, remplacer un montage trop provisoire par une version plus propre, et prévoir une structure qui facilite
+                les futurs réglages ou interventions.
+              </p>
+              <ul class="points">
+                <li>Amélioration progressive du prototype en corrigeant les limites du montage initial sur protoboard.</li>
+                <li>Recherche de fiabilité avec le PCB pour limiter les faux contacts, les parasites et les erreurs de câblage.</li>
+                <li>Organisation claire des sous-ensembles pour faciliter les tests, les corrections et les évolutions du projet.</li>
+                <li>Lecture critique des résultats afin d’ajuster le système avant la version finale et assurer son bon fonctionnement.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="competence-card">
+            <div class="competence-head">
+              <div class="competence-code">C4</div>
+              <h3>Installer</h3>
+            </div>
+            <div class="competence-body">
+              <p>
+                La compétence <strong>Installer</strong> a été mobilisée au moment du câblage, de l’intégration et de la mise en place
+                du prototype complet. Il ne suffisait pas d’avoir un bon schéma. Il fallait brancher correctement les composants,
+                respecter les alimentations, connecter les capteurs, intégrer le relais et l’ESP8266, puis rendre l’ensemble opérationnel.
+              </p>
+              <ul class="points">
+                <li>Montage réel sur protoboard pour les premiers essais du conditionneur analogique.</li>
+                <li>Implantation et soudure des composants sur la carte PCB après validation du schéma.</li>
+                <li>Intégration des capteurs ACS712 et ZMPT101B, du module relais et de la carte WiFi dans un montage complet.</li>
+                <li>Mise en service de l’interface web accessible par adresse IP pour exploiter concrètement le système installé.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>Bilan</h2>
+          <p>
+            Cette SAÉ montre que les quatre compétences du BUT GEII ne sont pas théoriques. Elles apparaissent directement dans
+            la manière de mener un projet technique de bout en bout. Concevoir a servi à imaginer la solution. Vérifier a servi à
+            valider les choix. Maintenir a servi à corriger et fiabiliser le système. Installer a servi à transformer l’idée en prototype
+            concret. Le résultat final est un système capable de mesurer, communiquer et commander, donc un projet représentatif
+            du génie électrique et des systèmes connectés.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="photos">
+      <div class="container">
+        <div class="section-title">
+          <h2>Galerie du projet</h2>
+          <p>
+            Place tes 10 images dans le même dossier que ce fichier HTML en les nommant exactement :
+            <strong>P1.jpg</strong>, <strong>P2.jpg</strong>, <strong>P3.jpg</strong> ... jusqu’à <strong>P10.jpg</strong>.
+            Elles s’afficheront automatiquement sur le site.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card">
+            <img src="P1.jpg" alt="Photo 1 du projet">
+            <figcaption class="caption">P1 – Vue générale du projet ou de la page de garde</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P2.jpg" alt="Photo 2 du projet">
+            <figcaption class="caption">P2 – Simulation ou schéma du conditionneur</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P3.jpg" alt="Photo 3 du projet">
+            <figcaption class="caption">P3 – Montage sur protoboard</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P4.jpg" alt="Photo 4 du projet">
+            <figcaption class="caption">P4 – Oscilloscope ou validation des signaux</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P5.jpg" alt="Photo 5 du projet">
+            <figcaption class="caption">P5 – Carte PCB avant soudure</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P6.jpg" alt="Photo 6 du projet">
+            <figcaption class="caption">P6 – Carte PCB après soudure</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P7.jpg" alt="Photo 7 du projet">
+            <figcaption class="caption">P7 – Intégration des capteurs et modules</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P8.jpg" alt="Photo 8 du projet">
+            <figcaption class="caption">P8 – Interface web affichée sur téléphone ou PC</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P9.jpg" alt="Photo 9 du projet">
+            <figcaption class="caption">P9 – Commande ON/OFF du relais</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="P10.jpg" alt="Photo 10 du projet">
+            <figcaption class="caption">P10 – Vision finale du prototype</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card">
+        Portfolio réalisé pour mettre en valeur les compétences <strong>C1 Concevoir</strong>, <strong>C2 Vérifier</strong>,
+        <strong>C3 Maintenir</strong> et <strong>C4 Installer</strong> à travers la SAÉ 5 de BUT GEII.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

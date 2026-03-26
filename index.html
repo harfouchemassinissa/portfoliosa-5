@@ -20,781 +20,206 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(110,168,255,0.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(126,240,196,0.10), transparent 22%),
-        var(--bg);
+      font-family: Inter, Arial;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.55;
     }
 
-    a { color: inherit; text-decoration: none; }
     .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(11,16,32,0.72);
+      background: rgba(11,16,32,0.9);
       border-bottom: 1px solid var(--line);
     }
 
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
-      gap: 20px;
-    }
+    .nav { display: flex; justify-content: space-between; padding: 14px 0; }
 
-    .brand {
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .hero { padding: 60px 0; }
 
-    .brand-badge {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 20px rgba(110,168,255,0.8);
-    }
+    h1 { font-size: 3rem; margin: 10px 0; }
 
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+    .section { margin-top: 20px; padding: 20px; background: var(--panel); border-radius: 20px; }
 
-    .hero {
-      padding: 72px 0 34px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 26px;
-      align-items: stretch;
-    }
-
-    .hero-card, .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      padding: 34px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      right: -60px;
-      top: -60px;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(110,168,255,0.25), transparent 60%);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(110,168,255,0.10);
-      color: #dce8ff;
-      font-size: 0.88rem;
-      border: 1px solid rgba(110,168,255,0.18);
-    }
-
-    h1 {
-      margin: 18px 0 12px;
-      font-size: clamp(2rem, 4vw, 4.2rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .lead {
-      max-width: 760px;
-      font-size: 1.05rem;
-      color: var(--muted);
-      margin: 0 0 24px;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.55rem;
-      margin-bottom: 4px;
-    }
-
-    .hero-side {
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .profile-block h2,
-    .section h2 {
-      margin: 0 0 12px;
-      font-size: 1.45rem;
-      letter-spacing: -0.02em;
-    }
-
-    .muted { color: var(--muted); }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tag {
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(126,240,196,0.10);
-      border: 1px solid rgba(126,240,196,0.18);
-      color: #dffff4;
-      font-size: 0.92rem;
-    }
-
-    main { padding-bottom: 56px; }
-
-    .section {
-      margin-top: 22px;
-      padding: 28px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 20px;
-      margin-bottom: 18px;
-    }
-
-    .section-header p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 15px; }
 
     .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px;
-      min-height: 100%;
-    }
-
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      gap: 16px;
-      margin-bottom: 10px;
-    }
-
-    .card h3 {
-      margin: 0;
-      font-size: 1.18rem;
-      letter-spacing: -0.02em;
-    }
-
-    .index {
-      min-width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, rgba(110,168,255,0.18), rgba(126,240,196,0.12));
-      border: 1px solid var(--line);
-      font-weight: 700;
-    }
-
-    .card p { margin: 0 0 12px; color: var(--muted); }
-
-    .mini-title {
-      margin: 16px 0 8px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #dbe7ff;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    ul {
-      margin: 8px 0 0 18px;
-      padding: 0;
-      color: var(--text);
-    }
-
-    li { margin: 8px 0; }
-
-    .evidence {
-      margin-top: 14px;
-      padding: 14px;
       background: var(--panel-2);
-      border-radius: 16px;
-      border: 1px dashed rgba(255,255,255,0.12);
-      color: #d9e6ff;
-      font-size: 0.95rem;
+      padding: 20px;
+      border-radius: 15px;
     }
 
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .step {
-      padding: 18px;
-      border-radius: 18px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-
-    .step strong { display: block; margin-bottom: 6px; }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .gallery-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .gallery-card img {
+    .placeholder {
       width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      background: #0d1428;
+      height: 160px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1e2a4a, #2e4a7a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9bb4ff;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .gallery-content {
-      padding: 16px 18px 18px;
-    }
-
-    .gallery-content h3 {
-      margin: 0 0 6px;
-      font-size: 1.05rem;
-    }
-
-    .gallery-content p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .footer {
-      margin-top: 22px;
-      padding: 26px 0 50px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid, .grid, .timeline, .gallery {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .section-header {
-        flex-direction: column;
-        align-items: start;
-      }
-
-      .gallery-card img {
-        height: 220px;
-      }
-    }
+    ul { margin-left: 18px; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand"><span class="brand-badge"></span> Portfolio SAE 5</div>
-      <nav class="nav-links">
-        <a href="#profil">Profil</a>
-        <a href="#competences">Compétences</a>
-        <a href="#demarche">Démarche</a>
-        <a href="#preuves">Preuves</a>
-        <a href="#galerie">Galerie</a>
-      </nav>
+
+<div class="container">
+
+  <section class="hero">
+    <h1>Portfolio – Compétences GEII</h1>
+    <p>Portfolio basé sur les compétences centrales du BUT GEII mobilisées lors de la réalisation d’un système énergétique connecté : C1 Concevoir, C2 Vérifier, C3 Maintenir, C4 Installer.</p>
+  </section>
+
+  <section class="section">
+    <h2>Compétences centrales du BUT GEII</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>C1 — Concevoir</h3>
+        <ul>
+          <li>Conception du conditionneur analogique adapté au microcontrôleur</li>
+          <li>Choix des capteurs, de l’ESP8266 et du relais</li>
+          <li>Conception du PCB sous KiCad et structuration de l’architecture globale</li>
+        </ul>
+        <div class="placeholder">Conception électronique / architecture système</div>
+      </div>
+
+      <div class="card">
+        <h3>C2 — Vérifier</h3>
+        <ul>
+          <li>Validation des signaux à l’oscilloscope</li>
+          <li>Tests progressifs sur valeurs simulées puis réelles</li>
+          <li>Contrôle de cohérence des mesures et du fonctionnement global</li>
+        </ul>
+        <div class="placeholder">Mesures, essais et validation</div>
+      </div>
+
+      <div class="card">
+        <h3>C3 — Maintenir</h3>
+        <ul>
+          <li>Analyse des limites du prototype et des écarts de mesure</li>
+          <li>Correction du code, ajustement du montage et amélioration progressive</li>
+          <li>Recherche de solutions pour fiabiliser le système et faciliter son évolution</li>
+        </ul>
+        <div class="placeholder">Diagnostic, correction et amélioration</div>
+      </div>
+
+      <div class="card">
+        <h3>C4 — Installer</h3>
+        <ul>
+          <li>Montage sur protoboard puis intégration sur PCB</li>
+          <li>Câblage des capteurs, du relais et du microcontrôleur</li>
+          <li>Assemblage final du prototype connecté et mise en service</li>
+        </ul>
+        <div class="placeholder">Montage, câblage et intégration</div>
+      </div>
+
+      <div class="card">
+        <h3>Compétences techniques associées</h3>
+        <ul>
+          <li>Électronique analogique</li>
+          <li>Mesure électrique</li>
+          <li>Programmation embarquée</li>
+          <li>Communication IoT</li>
+        </ul>
+        <div class="placeholder">Blocs techniques mobilisés</div>
+      </div>
+
+      <div class="card">
+        <h3>Résultat global</h3>
+        <ul>
+          <li>Prototype capable de mesurer, traiter, transmettre et commander</li>
+          <li>Démarche de travail structurée de la simulation au prototype final</li>
+          <li>Mise en œuvre cohérente des compétences centrales du BUT GEII</li>
+        </ul>
+        <div class="placeholder">Système final fonctionnel</div>
+      </div>
+
+      <div class="card">
+        <h3>Électronique analogique</h3>
+        <ul>
+          <li>Offset, amplification, filtrage</li>
+          <li>Utilisation AOP LM358</li>
+        </ul>
+        <div class="placeholder">Oscilloscope / Signal analogique</div>
+      </div>
+
+      <div class="card">
+        <h3>Mesure électrique</h3>
+        <ul>
+          <li>Capteurs ACS712 & ZMPT101B</li>
+          <li>Conversion analogique</li>
+        </ul>
+        <div class="placeholder">Capteurs courant / tension</div>
+      </div>
+
+      <div class="card">
+        <h3>Programmation embarquée</h3>
+        <ul>
+          <li>Calcul puissance et énergie</li>
+          <li>Traitement des données</li>
+        </ul>
+        <div class="placeholder">Code ESP8266</div>
+      </div>
+
+      <div class="card">
+        <h3>IoT & Communication</h3>
+        <ul>
+          <li>Serveur web embarqué</li>
+          <li>Transmission WiFi</li>
+        </ul>
+        <div class="placeholder">Interface web</div>
+      </div>
+
+      <div class="card">
+        <h3>Automatisme</h3>
+        <ul>
+          <li>Commande relais</li>
+          <li>Interaction utilisateur</li>
+        </ul>
+        <div class="placeholder">Relais ON/OFF</div>
+      </div>
+
+      <div class="card">
+        <h3>Conception PCB</h3>
+        <ul>
+          <li>KiCad</li>
+          <li>Soudure composants</li>
+        </ul>
+        <div class="placeholder">PCB électronique</div>
+      </div>
+
+      <div class="card">
+        <h3>Intégration système</h3>
+        <ul>
+          <li>Assemblage global</li>
+          <li>Système fonctionnel</li>
+        </ul>
+        <div class="placeholder">Montage final</div>
+      </div>
+
+      <div class="card">
+        <h3>Tests & validation</h3>
+        <ul>
+          <li>Oscilloscope</li>
+          <li>Validation progressive</li>
+        </ul>
+        <div class="placeholder">Tests et mesures</div>
+      </div>
+
     </div>
-  </header>
+  </section>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-grid">
-        <article class="hero-card">
-          <span class="eyebrow">BUT GEII • Portfolio orienté compétences</span>
-          <h1>Charif Harfouche</h1>
-          <p class="lead">
-            Portfolio centré sur les compétences mobilisées pour concevoir et réaliser un système de mesure d’énergie connecté.
-            L’objectif n’est pas de raconter le projet, mais de montrer les blocs techniques réellement maîtrisés.
-          </p>
-          <div class="hero-stats">
-            <div class="stat">
-              <strong>10</strong>
-              <span class="muted">compétences mises en avant</span>
-            </div>
-            <div class="stat">
-              <strong>GEII</strong>
-              <span class="muted">électronique, énergie, embarqué, IoT</span>
-            </div>
-            <div class="stat">
-              <strong>Terrain</strong>
-              <span class="muted">de la simulation au prototype fonctionnel</span>
-            </div>
-          </div>
-        </article>
+</div>
 
-        <aside class="hero-side panel" id="profil">
-          <div class="profile-block">
-            <h2>Positionnement</h2>
-            <p class="muted">
-              Étudiant BUT GEII orienté maîtrise de l’énergie. Travail mené sur un système mêlant mesure analogique,
-              traitement embarqué, communication WiFi et commande d’une charge.
-            </p>
-          </div>
-          <div class="profile-block">
-            <h2>Points forts</h2>
-            <div class="tag-list">
-              <span class="tag">Électronique analogique</span>
-              <span class="tag">Mesure électrique</span>
-              <span class="tag">ESP8266</span>
-              <span class="tag">IoT</span>
-              <span class="tag">PCB / KiCad</span>
-              <span class="tag">Validation</span>
-            </div>
-          </div>
-          <div class="profile-block">
-            <h2>Finalité du portfolio</h2>
-            <p class="muted">
-              Montrer une capacité à concevoir un système complet, à valider chaque bloc, puis à intégrer l’ensemble dans une réalisation cohérente.
-            </p>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section panel" id="competences">
-      <div class="section-header">
-        <div>
-          <h2>Compétences techniques mobilisées</h2>
-          <p>Chaque carte présente une compétence, les actions réalisées, les outils utilisés et les preuves à mettre en avant dans le portfolio visuel.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="card-top">
-            <h3>Électronique analogique</h3>
-            <div class="index">01</div>
-          </div>
-          <p>Adaptation d’un signal analogique pour le rendre exploitable par un microcontrôleur.</p>
-          <div class="mini-title">Ce que j’ai réalisé</div>
-          <ul>
-            <li>Recentrage du signal autour d’une tension de référence Vref.</li>
-            <li>Amplification avec AOP LM358 sans perdre l’offset.</li>
-            <li>Filtrage RC et détection de crête pour obtenir une tension plus stable.</li>
-          </ul>
-          <div class="mini-title">Outils / composants</div>
-          <ul>
-            <li>LM358, résistances, condensateurs, diode, oscilloscope.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P1.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Mesure électrique</h3>
-            <div class="index">02</div>
-          </div>
-          <p>Acquisition des grandeurs électriques utiles au calcul de puissance et d’énergie.</p>
-          <div class="mini-title">Ce que j’ai réalisé</div>
-          <ul>
-            <li>Utilisation d’un capteur de courant ACS712.</li>
-            <li>Utilisation d’un capteur de tension ZMPT101B avec isolement.</li>
-            <li>Conversion du signal mesuré vers une forme lisible par l’ADC.</li>
-          </ul>
-          <div class="mini-title">Outils / composants</div>
-          <ul>
-            <li>ACS712, ZMPT101B, alimentation, multimètre, montage de test.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P2.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Programmation embarquée</h3>
-            <div class="index">03</div>
-          </div>
-          <p>Traitement des données mesurées dans un microcontrôleur connecté.</p>
-          <div class="mini-title">Ce que j’ai réalisé</div>
-          <ul>
-            <li>Lecture et traitement des entrées liées à la tension et au courant.</li>
-            <li>Calcul de la puissance instantanée et de l’énergie cumulée.</li>
-            <li>Organisation d’un code simple pour affichage et commande.</li>
-          </ul>
-          <div class="mini-title">Outils / technologies</div>
-          <ul>
-            <li>ESP8266, logique de calcul énergétique, environnement Arduino.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P3.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Communication IoT</h3>
-            <div class="index">04</div>
-          </div>
-          <p>Mise à disposition des données de mesure via un accès réseau local.</p>
-          <div class="mini-title">Ce que j’ai réalisé</div>
-          <ul>
-            <li>Création d’une interface web hébergée sur l’ESP8266.</li>
-            <li>Transmission des données par WiFi à travers une adresse IP locale.</li>
-            <li>Actualisation des valeurs pour une visualisation quasi temps réel.</li>
-          </ul>
-          <div class="mini-title">Outils / technologies</div>
-          <ul>
-            <li>WiFi 2.4 GHz, ESP8266, serveur web embarqué, smartphone / navigateur.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P4.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Automatisme et commande</h3>
-            <div class="index">05</div>
-          </div>
-          <p>Ajout d’une fonction d’action sur la charge pour passer d’un système de mesure à un système pilotable.</p>
-          <div class="mini-title">Ce que j’ai réalisé</div>
-          <ul>
-            <li>Commande d’un relais depuis une sortie de l’ESP8266.</li>
-            <li>Pilotage ON/OFF depuis l’interface web.</li>
-            <li>Vérification du comportement du système charge coupée / charge alimentée.</li>
-          </ul>
-          <div class="mini-title">Outils / composants</div>
-          <ul>
-            <li>Module relais 5 V, sortie numérique, charge de test.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P5.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Conception PCB</h3>
-            <div class="index">06</div>
-          </div>
-          <p>Passage d’un montage expérimental vers une carte plus stable et reproductible.</p>
-          <div class="mini-title">Ce que j’ai réalisé</div>
-          <ul>
-            <li>Redessin du schéma validé sur KiCad.</li>
-            <li>Conception d’un PCB pour fiabiliser les connexions.</li>
-            <li>Perçage et soudure manuelle des composants du conditionneur.</li>
-          </ul>
-          <div class="mini-title">Outils / technologies</div>
-          <ul>
-            <li>KiCad, fer à souder, carte percée, implantation des composants.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P6.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Intégration système</h3>
-            <div class="index">07</div>
-          </div>
-          <p>Assemblage cohérent de plusieurs blocs techniques dans un même prototype.</p>
-          <div class="mini-title">Ce que j’ai réalisé</div>
-          <ul>
-            <li>Connexion des capteurs, du conditionneur, du microcontrôleur et du relais.</li>
-            <li>Organisation du câblage et des interfaces entre les blocs.</li>
-            <li>Vérification du fonctionnement global après intégration.</li>
-          </ul>
-          <div class="mini-title">Résultat</div>
-          <ul>
-            <li>Prototype complet capable de mesurer, traiter, transmettre et agir.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P7.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Tests et validation</h3>
-            <div class="index">08</div>
-          </div>
-          <p>Validation progressive des fonctions avant figer la conception.</p>
-          <div class="mini-title">Ce que j’ai réalisé</div>
-          <ul>
-            <li>Tests d’abord sur valeurs simulées pour valider la logique générale.</li>
-            <li>Observation des signaux à l’oscilloscope sur chaque bloc.</li>
-            <li>Passage aux composants réels après validation intermédiaire.</li>
-          </ul>
-          <div class="mini-title">Ce que ça montre</div>
-          <ul>
-            <li>Capacité à sécuriser un développement technique étape par étape.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P8.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Démarche d’ingénierie</h3>
-            <div class="index">09</div>
-          </div>
-          <p>Méthode de travail structurée allant de l’idée au prototype fonctionnel.</p>
-          <div class="mini-title">Ce que j’ai montré</div>
-          <ul>
-            <li>Décomposition du problème en blocs techniques séparés.</li>
-            <li>Validation avant intégration finale.</li>
-            <li>Correction et amélioration au fur et à mesure des essais.</li>
-          </ul>
-          <div class="mini-title">Valeur ajoutée</div>
-          <ul>
-            <li>Approche proche d’une vraie démarche de conception système.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P9.jpeg</div>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Analyse critique</h3>
-            <div class="index">10</div>
-          </div>
-          <p>Capacité à identifier les limites techniques d’une réalisation et à proposer des améliorations.</p>
-          <div class="mini-title">Limites identifiées</div>
-          <ul>
-            <li>Facteur de puissance simplifié avec cos φ fixé à 1.</li>
-            <li>Précision des capteurs dépendante de la calibration.</li>
-            <li>Interface web encore simple sur le plan fonctionnel.</li>
-          </ul>
-          <div class="mini-title">Pistes d’amélioration</div>
-          <ul>
-            <li>Mesure réelle du déphasage.</li>
-            <li>Calibration plus poussée.</li>
-            <li>Stockage et historisation des données.</li>
-          </ul>
-          <div class="evidence"><strong>Preuve visuelle liée :</strong> P10.jpeg</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section panel" id="demarche">
-      <div class="section-header">
-        <div>
-          <h2>Démarche suivie</h2>
-          <p>Le point important n’est pas seulement le résultat final, mais la manière dont chaque bloc a été validé avant intégration globale.</p>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="step">
-          <strong>1. Simuler</strong>
-          <span class="muted">Comprendre le comportement attendu avant câblage réel.</span>
-        </div>
-        <div class="step">
-          <strong>2. Tester</strong>
-          <span class="muted">Observer les signaux et corriger les écarts avec la théorie.</span>
-        </div>
-        <div class="step">
-          <strong>3. Fiabiliser</strong>
-          <span class="muted">Passer sur PCB pour stabiliser le montage analogique.</span>
-        </div>
-        <div class="step">
-          <strong>4. Intégrer</strong>
-          <span class="muted">Assembler l’ensemble dans un prototype connecté et commandable.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section panel" id="preuves">
-      <div class="section-header">
-        <div>
-          <h2>Éléments visuels intégrés</h2>
-          <p>Chaque image ci-dessous doit être placée dans le même dossier que ce fichier HTML avec le bon nom : P1.jpeg à P10.jpeg.</p>
-        </div>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="card-top">
-            <h3>Répartition conseillée</h3>
-            <div class="index">A</div>
-          </div>
-          <ul>
-            <li>P1 : montage sur protoboard</li>
-            <li>P2 : capteurs câblés</li>
-            <li>P3 : code ou affichage de valeurs</li>
-            <li>P4 : interface web sur téléphone ou PC</li>
-            <li>P5 : module relais / commande</li>
-            <li>P6 : PCB KiCad ou carte soudée</li>
-            <li>P7 : vue du montage complet</li>
-            <li>P8 : test ou capture oscilloscope</li>
-            <li>P9 : évolution du prototype</li>
-            <li>P10 : bilan final ou vue propre finale</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <div class="card-top">
-            <h3>Règle à respecter</h3>
-            <div class="index">B</div>
-          </div>
-          <ul>
-            <li>Les fichiers doivent être dans le même dossier que la page HTML.</li>
-            <li>Les noms doivent être exactement : P1.jpeg, P2.jpeg ... P10.jpeg</li>
-            <li>Évite les noms du type P1(1).jpeg ou p1.jpg</li>
-            <li>Si une image ne s’affiche pas, c’est presque toujours un problème de nom.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section panel" id="galerie">
-      <div class="section-header">
-        <div>
-          <h2>Galerie des preuves visuelles</h2>
-          <p>Les images ci-dessous sont directement reliées aux compétences du portfolio.</p>
-        </div>
-      </div>
-
-      <div class="gallery">
-        <article class="gallery-card">
-          <img src="P1.jpeg" alt="P1 - Montage sur protoboard">
-          <div class="gallery-content">
-            <h3>P1 – Montage sur protoboard</h3>
-            <p>Première phase de validation du conditionneur et du câblage analogique.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P2.jpeg" alt="P2 - Capteurs de mesure">
-          <div class="gallery-content">
-            <h3>P2 – Capteurs de mesure</h3>
-            <p>Intégration des capteurs de courant et de tension dans le prototype.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P3.jpeg" alt="P3 - Programmation embarquée">
-          <div class="gallery-content">
-            <h3>P3 – Programmation embarquée</h3>
-            <p>Traitement des mesures et calcul des grandeurs énergétiques sur ESP8266.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P4.jpeg" alt="P4 - Interface web">
-          <div class="gallery-content">
-            <h3>P4 – Interface web</h3>
-            <p>Consultation des valeurs via une page web locale accessible en WiFi.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P5.jpeg" alt="P5 - Commande relais">
-          <div class="gallery-content">
-            <h3>P5 – Commande relais</h3>
-            <p>Ajout de la fonction ON/OFF pour agir sur la charge à distance.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P6.jpeg" alt="P6 - PCB">
-          <div class="gallery-content">
-            <h3>P6 – Conception PCB</h3>
-            <p>Passage d’un montage temporaire à une carte plus propre et plus fiable.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P7.jpeg" alt="P7 - Intégration complète">
-          <div class="gallery-content">
-            <h3>P7 – Intégration système</h3>
-            <p>Assemblage final des différents blocs dans un seul prototype cohérent.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P8.jpeg" alt="P8 - Test et validation">
-          <div class="gallery-content">
-            <h3>P8 – Tests et validation</h3>
-            <p>Validation progressive du comportement réel à partir des mesures observées.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P9.jpeg" alt="P9 - Démarche d’ingénierie">
-          <div class="gallery-content">
-            <h3>P9 – Démarche d’ingénierie</h3>
-            <p>Illustration des différentes étapes entre idée, correction et amélioration.</p>
-          </div>
-        </article>
-
-        <article class="gallery-card">
-          <img src="P10.jpeg" alt="P10 - Résultat final">
-          <div class="gallery-content">
-            <h3>P10 – Résultat final</h3>
-            <p>Vue finale du système avec mise en valeur du résultat obtenu.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <div class="footer">
-      Portfolio HTML centré sur les compétences GEII mobilisées dans la SAE 5.
-    </div>
-  </main>
 </body>
 </html>
